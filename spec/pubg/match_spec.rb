@@ -8,7 +8,7 @@ RSpec.describe PUBG::Match do
     end
 
     it "included" do
-      expect(match.included).not_to be nil
+      expect(match.included.count).not_to be(0)
     end
 
     it "links" do
@@ -32,6 +32,18 @@ RSpec.describe PUBG::Match do
     end
 
     describe "can read data" do
+      describe "data" do
+        it "type" do
+          expect(match.data.type).to eq("match")
+        end
+
+        describe "attributes" do
+          it "duration" do
+            expect(match.data.attributes.duration).to eq(1826)
+          end
+        end
+      end
+
       it "links" do
         expect(match.links.self).to eq("https://api-origin.playbattlegrounds.com/shards/xbox-na/matches/895e77a8-0efa-492b-b256-3e9bf79097e6")
       end

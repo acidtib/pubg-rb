@@ -1,5 +1,6 @@
 module PUBG
 	class Match
+		require "pubg/match/data"
 		require "pubg/match/links"
 		require "pubg/match/participants"
 		require "pubg/match/telemetry"
@@ -10,11 +11,17 @@ module PUBG
 		end
 
 		def data
-			@args["data"]
+			Data.new(@args["data"])
 		end
 
 		def included
-			@args["included"]
+			include = []
+			@args["included"].each do |inc|
+				include << Telemetry.new(inc) if inc["type"] == "asset"
+				include << Participants.new(inc) if inc["type"] == "participant"
+				include << Roster.new(inc) if inc["type"] == "roster"
+			end
+			return include
 		end
 
 		def links
