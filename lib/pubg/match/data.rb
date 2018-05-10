@@ -2,6 +2,7 @@ module PUBG
   class Match
     class Data
       require "pubg/match/data/attributes"
+      require "pubg/match/data/ralationships"
       require "pubg/match/data/links"
 
       def initialize(args)
@@ -21,7 +22,7 @@ module PUBG
       end
 
       def relationships
-        @args["ralationships"]
+        Relationships.new(@args["relationships"])
       end
 
       def links

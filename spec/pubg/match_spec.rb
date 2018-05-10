@@ -37,6 +37,16 @@ RSpec.describe PUBG::Match do
           expect(match.data.type).to eq("match")
         end
 
+        describe "relationships" do
+          it "rosters" do
+            expect(match.data.relationships.rosters.first.type).to eq("roster")
+          end
+
+          it "assets" do
+            expect(match.data.relationships.assets.first.type).to eq("asset")
+          end
+        end
+
         describe "attributes" do
           it "duration" do
             expect(match.data.attributes.duration).to eq(1826)
