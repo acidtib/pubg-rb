@@ -1,5 +1,6 @@
 module PUBG
 	class Match
+		require "pubg/match/links"
 		require "pubg/match/participants"
 		require "pubg/match/telemetry"
 		require "pubg/match/roster"
@@ -17,7 +18,7 @@ module PUBG
 		end
 
 		def links
-			@args["links"]
+			Links.new(@args["links"])
 		end
 
 		def meta

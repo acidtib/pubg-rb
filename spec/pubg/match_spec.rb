@@ -30,5 +30,11 @@ RSpec.describe PUBG::Match do
     it "roster" do
       expect(match.roster).not_to be nil
     end
+
+    describe "can read data" do
+      it "links" do
+        expect(match.links.self).to eq("https://api-origin.playbattlegrounds.com/shards/xbox-na/matches/895e77a8-0efa-492b-b256-3e9bf79097e6")
+      end
+    end
   end
 end
