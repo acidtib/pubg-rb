@@ -121,6 +121,7 @@ season.meta
 ```ruby
 match = @pubg.match("895e77a8-0efa-492b-b256-3e9bf79097e6")
 
+match.original
 match.data
 match.included
 match.links
